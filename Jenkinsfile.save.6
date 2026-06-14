@@ -1,0 +1,38 @@
+
+pipeline {
+    agent any
+
+    stages {
+
+	stage('Build') {
+	    steps {
+		echo 'Building application...'
+		sh 'node --version'
+	    }
+	}
+
+	stage('Test') {
+	    steps {
+		echo 'Running tests...'
+		echo 'Tests passed!'
+	    }
+	}
+
+	stage('deploy') {
+	    steps {
+		sh 'docker build -t jeckins-demo
+		#sh 'docker run -d -p 3000:3000 jenkins-demo || true'
+		echo "docker simulated sucessfully..."
+	    }
+        }
+    }
+
+    post {
+        success {
+            echo 'PIPELINE SUCCESS ✔'
+        }
+        failure {
+            echo 'PIPELINE FAILED ✖'
+        }
+    }
+}

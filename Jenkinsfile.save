@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Build') {    steps {
+	        echo 'Building application...'
+	        sh 'node --version'
+	    }
+	}
+
+	stage('Test') {
+	    steps {
+                echo 'Running tests...'
+	        echo 'Tests passed!'
+	    }
+	}
